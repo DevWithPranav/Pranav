@@ -1,368 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header and Navigation */
-        header {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #4CAF50;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                        url('/api/placeholder/1920/1080') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 1rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #4CAF50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .cta-btn:hover {
-            background: #45a049;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .about-text {
-            padding: 2rem;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: #f9f9f9;
-            padding: 5rem 1rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .skill-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 5rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #f9f9f9;
-            padding: 5rem 1rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .submit-btn {
-            background: #4CAF50;
-            color: #fff;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        .submit-btn:hover {
-            background: #45a049;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranav's Portfolio</title>
+  <style>
+    /* General styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #f3f3f3;
+      line-height: 1.6;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    header {
+      background: #4CAF50;
+      color: #fff;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      background-color: #333;
+    }
+    nav a {
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+    nav a:hover {
+      background-color: #4CAF50;
+    }
+    section {
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .skills, .projects, .roadmap, .contact {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .contact-form button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">Your Name</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>BTech CSE Student & Developer</h1>
-            <p>Passionate about Web Development, AI, and Technology</p>
-            <a href="#contact" class="cta-btn">Get in Touch</a>
-        </div>
-    </section>
+  <!-- Header Section -->
+  <header>
+    <h1>Hi, I'm Pranav!</h1>
+    <p>2nd Year B.Tech CSE Student at Mar Baselios College, Trivandrum, Kerala, India</p>
+  </header>
 
-    <section id="about" class="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a 21-year-old BTech CSE student at Mar Baselios, Trivandrum, Kerala. Currently serving as a tech co-lead at IEDEC Catalyst and actively involved with MuLearn.</p>
-                <p>My ambition is to become a scientist, with a particular interest in artificial intelligence. I dream of building an AI model similar to Jarvis from Iron Man.</p>
-            </div>
-            <div class="about-image">
-                <img src="/api/placeholder/400/400" alt="Profile Image" style="width: 100%; border-radius: 10px;">
-            </div>
-        </div>
-    </section>
+  <!-- Navigation -->
+  <nav>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <section id="skills" class="skills">
-        <h2 class="section-title">My Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Web Development</h3>
-                <p>HTML, CSS, JavaScript</p>
-            </div>
-            <div class="skill-card">
-                <h3>Programming</h3>
-                <p>C, Python</p>
-            </div>
-            <div class="skill-card">
-                <h3>Bot Development</h3>
-                <p>Discord Bot Creation</p>
-            </div>
-            <div class="skill-card">
-                <h3>Mobile Development</h3>
-                <p>1 month experience</p>
-            </div>
-        </div>
-    </section>
+  <!-- Skills Section -->
+  <section id="skills" class="container skills">
+    <h2>Skills</h2>
+    <p>I am passionate about technology and skilled in:</p>
+    <ul>
+      <li>Frontend Web Development</li>
+      <li>Discord.js Bot Development</li>
+      <li>Languages: C, Python, HTML, CSS, JavaScript</li>
+    </ul>
+  </section>
 
-    <section id="projects" class="projects">
-        <h2 class="section-title">My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="/api/placeholder/400/300" alt="Project 1" class="project-img">
-                <div class="project-info">
-                    <h3>Project 1</h3>
-                    <p>Description of your first project</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="/api/placeholder/400/300" alt="Project 2" class="project-img">
-                <div class="project-info">
-                    <h3>Project 2</h3>
-                    <p>Description of your second project</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="/api/placeholder/400/300" alt="Project 3" class="project-img">
-                <div class="project-info">
-                    <h3>Project 3</h3>
-                    <p>Description of your third project</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Projects Section -->
+  <section id="projects" class="container projects">
+    <h2>Projects</h2>
+    <p>Here are some of my notable projects:</p>
+    <ul>
+      <li>Discord Bots with Discord.js</li>
+      <li>Java Banking System Project using Swing and Database</li>
+      <li>3D Work Portfolio (Personal Projects)</li>
+    </ul>
+  </section>
 
-    <section id="contact" class="contact">
-        <h2 class="section-title">Contact Me</h2>
-        <form class="contact-form">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-    </section>
+  <!-- Roadmap Section -->
+  <section id="roadmap" class="container roadmap">
+    <h2>AI Learning Roadmap</h2>
+    <p>My goal is to build an AI assistant like Jarvis. Here’s my roadmap:</p>
+    <ul>
+      <li>Python Basics</li>
+      <li>Machine Learning and AI Fundamentals</li>
+      <li>Deep Learning</li>
+      <li>Natural Language Processing (NLP)</li>
+      <li>Speech Recognition and Computer Vision</li>
+      <li>API Integration</li>
+      <li>Long-Term Projects for Simulated Intelligence</li>
+    </ul>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </footer>
+  <!-- Contact Section -->
+  <section id="contact" class="container contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Pranav | All Rights Reserved</p>
+  </footer>
+
 </body>
 </html>
